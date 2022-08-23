@@ -13,9 +13,28 @@
     left: 0;  
     position: relative; 
     z-index: 10;
+    color: rgb(204, 204, 204);
 }
 
+
 /* delete later */
+
+#account_pk {
+    position: absolute;
+    left: 30vw;
+}
+
+#sol_available {
+    position: absolute;
+    left: 30vw;
+    top: 10vh;
+}
+
+#amount {
+    position: absolute;
+    left: 30vw;
+    top: 80vh;
+}
 
 #left{
     top: 100px; 

@@ -157,7 +157,7 @@ window.onload = async () => {
 
 const onStartClick = async (e) => {
   try {
-    window.parent.postMessage('connect to wallet', '*');
+    window.parent.postMessage('NO_CONNECT', '*');
     console.log('Connect from top');
   } catch (e) {
     console.log(e);
