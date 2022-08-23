@@ -167,7 +167,8 @@ const onStartClick = async (e) => {
 document.getElementById('startButton').onclick = onStartClick;
 
 window.addEventListener('message', (event) => {
-  if (event.origin.startsWith('http://localhost:3002')) {
+  // if (event.origin.startsWith('http://localhost:3002')) {
+  if (true) {
     console.log(event.data);
 
     switch (event.data) {
