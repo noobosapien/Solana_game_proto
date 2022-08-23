@@ -36,6 +36,18 @@
     top: 80vh;
 }
 
+#selected_tile{
+    position: absolute;
+    left: 5vw;
+    top: 40vh;
+}
+
+#winning_tile{
+    position: absolute;
+    left: 75vw;
+    top: 40vh;
+}
+
 #left{
     top: 100px; 
     left: 100px;  
