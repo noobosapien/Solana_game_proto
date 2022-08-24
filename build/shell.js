@@ -159,6 +159,13 @@ const onStartClick = async (e) => {
   try {
     window.parent.postMessage('NO_CONNECT', '*');
     console.log('Connect from top');
+    document.querySelector('#ui').style.zIndex = 0;
+    document.querySelector('#ui').style.opacity = 0;
+    document.getElementById('game').style.opacity = 1;
+    document.getElementById('game').style.zIndex = 1;
+    if (startGame) {
+      startGame();
+    }
   } catch (e) {
     console.log(e);
   }
@@ -173,13 +180,13 @@ window.addEventListener('message', (event) => {
 
     switch (event.data) {
       case 'connected':
-        document.querySelector('#ui').style.zIndex = 0;
-        document.querySelector('#ui').style.opacity = 0;
-        document.getElementById('game').style.opacity = 1;
-        document.getElementById('game').style.zIndex = 1;
-        if (startGame) {
-          startGame();
-        }
+        // document.querySelector('#ui').style.zIndex = 0;
+        // document.querySelector('#ui').style.opacity = 0;
+        // document.getElementById('game').style.opacity = 1;
+        // document.getElementById('game').style.zIndex = 1;
+        // if (startGame) {
+        //   startGame();
+        // }
         break;
       default:
         break;

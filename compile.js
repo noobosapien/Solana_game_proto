@@ -6,7 +6,7 @@ var files = [];
 const options = [
   '-o build/index.html',
   '-std=c++17',
-  '-s --shell-file shell/shell.html',
+  '-s --shell-file build/shell.html',
   `-s EXPORTED_FUNCTIONS="['_main', '_set_win_dim', '_start_game', '_set_game_data', '_call_ui_rpc']"`,
   `-s EXTRA_EXPORTED_RUNTIME_METHODS="['cwrap', 'ccall']"`,
   `-lwebsocket.js`,
