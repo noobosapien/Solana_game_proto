@@ -8,6 +8,7 @@ const selectedValue = document.getElementById('selected_tile_value');
 const errorModal = document.getElementById('errorModal');
 const errorModalClose = document.getElementById('errorModalClose');
 const processingModal = document.getElementById('processingModal');
+const winningTileValue = document.getElementById('winning_tile_value');
 
 var walletConnected = false;
 
@@ -19,7 +20,6 @@ const onStartClick = async (e) => {
       },
       '*'
     );
-    console.log('Connect from top');
     document.querySelector('#ui').style.zIndex = 0;
     document.querySelector('#ui').style.opacity = 0;
     document.getElementById('game').style.opacity = 1;
@@ -81,17 +81,19 @@ const onBetClicked = (e) => {
   );
 };
 
-onBetModalClose = () => {
+const onBetModalClose = () => {
   errorModal.style.display = 'none';
 };
 
 betButton.onclick = onBetClicked;
 errorModalClose.onclick = onBetModalClose;
 
+const onProcessingModalClose = () => {
+  processingModal.style.display = 'none';
+};
+
 window.addEventListener('message', (event) => {
   if (true) {
-    console.log(event.data);
-
     switch (event.data.name) {
       case 'CONNECTION': {
         if (event.data.value === 'connected') {
@@ -119,10 +121,13 @@ window.addEventListener('message', (event) => {
         break;
       }
 
+      case 'SET_WINNING_TILE': {
+        winningTileValue.innerText = event.data.value;
+        onProcessingModalClose();
+        break;
+      }
       default:
         break;
     }
-  } else {
-    return;
   }
 });
