@@ -1,8 +1,9 @@
 #include "headers/gamepch.h"
 
-MouseInComponent::MouseInComponent(Actor *owner, int updateOrder) : Component(owner, updateOrder)
+MouseInComponent::MouseInComponent(Actor *owner, int value, int updateOrder) : Component(owner, updateOrder)
 {
     mOwner->getGame()->addMouseInComp(this);
+    mValue = value;
 }
 
 MouseInComponent::~MouseInComponent()
@@ -23,6 +24,11 @@ void MouseInComponent::mouseClicked(float x, float y)
 
         mOwner->getSpriteComponent()->setTint(glm::vec3(0.f, 1.f, 0.f));
         mOwner->getGame()->changeMouseClicked(this);
+
+        if (mValue > 0 && mValue <= 12)
+        {
+            EM_ASM({UI_RPC("NUMBER_CHANGED", $0)}, mValue);
+        }
     }
 }
 

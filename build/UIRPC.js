@@ -1,17 +1,15 @@
+const selected = document.getElementById('selected_tile_value');
+
 function UI_RPC(command, ...args) {
-  console.log('Called: ', command);
+  console.log('Called: ', command, args[0]);
 
   switch (command) {
-    case 'PLAYER_HP_RESET':
-      break;
-
-    case 'ENEMY_HP_RESET':
-      break;
-
-    case 'PLAYER_HP_HIT':
-      break;
-
-    case 'ENEMY_HP_HIT':
+    case 'NUMBER_CHANGED':
+      {
+        if (selected) {
+          selected.innerText = args[0];
+        }
+      }
       break;
 
     default:

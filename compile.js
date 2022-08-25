@@ -42,6 +42,8 @@ walker.on('end', function () {
     command = command + option + ' ';
   });
 
+  const oldDate = new Date();
+
   exec(command, (err, stdout, stderr) => {
     console.log(stderr);
 

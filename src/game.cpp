@@ -175,7 +175,6 @@ void Game::loadData()
     // mPlayer = new Player(this, mLeft);
     // mEnemy = new Enemy(this, !mLeft);
     mUtils = new Utils(this);
-    EM_ASM({UI_RPC("PLAYER_LOST", 'we', 'fe', 20.4)});
     mLevel = new GameLevel(this);
     mLevel->load("src/assets/levels/1.txt", 800, 800);
 }

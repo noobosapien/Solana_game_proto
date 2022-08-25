@@ -1,75 +1,130 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
     <title>Hamster race</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <link href="./shell.css" rel="stylesheet" type="text/css">
-    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <link href="./shell.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-
-    <div style="top: 0; left: 0;"  id="ui">
+    <div style="top: 0; left: 0" id="ui">
       <button type="button" class="btn btn-primary" id="startButton" disabled>
-        Connect to a wallet
+        Start
       </button>
 
-      <div class="progress" id="progress" style="top: 60%;">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" id="progressBar" role="progressbar" style="width: 0%; top: 60%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="progress" id="progress" style="top: 60%">
+        <div
+          class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+          id="progressBar"
+          role="progressbar"
+          style="width: 0%; top: 60%"
+          aria-valuenow="25"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
       </div>
-      
     </div>
 
     <div id="game">
-      
-
-      <canvas 
-        id="canvas" 
-        style="top: 0; left: 0;" 
-        width=window.innerWidth 
-        height=window.innerHeight 
+      <canvas
+        id="canvas"
+        style="top: 0; left: 0"
+        width="window.innerWidth"
+        height="window.innerHeight"
         oncontextmenu="event.preventDefault()"
       >
       </canvas>
 
       <div id="game-ui">
-        <div id="account_pk">
-          <h6>Account: </h6>
+        <div id="disconModal" class="modal">
+          <div class="modal-content">
+            <p>Wallet disconnected please connect from the top.</p>
+          </div>
         </div>
+
+        <div id="processingModal" class="modal">
+          <div class="modal-content">
+            <div
+              class="spinner-grow"
+              style="width: 3rem; height: 3rem"
+              role="status"
+            >
+              <span class="sr-only"></span>
+            </div>
+          </div>
+        </div>
+
+        <div id="errorModal" class="modal">
+          <div class="modal-content">
+            <p>
+              Please select a tile and choose a betting amount less than the
+              available balance.
+            </p>
+            <button
+              id="errorModalClose"
+              type="button"
+              class="btn btn-secondary"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+
+        <div id="account_pk">
+          <h6 id="account_pk_name">Account:</h6>
+          <span id="account_pk_value">0x0</span>
+        </div>
+
         <div id="sol_available">
-          <h6>Available SOL: </h6>
+          <h6 id="sol_available_name">Available:</h6>
+          <span id="sol_available_value">0x0</span>
         </div>
 
         <div id="selected_tile">
           <h6>Selected tile:</h6>
+
+          <div id="selected_tile_cont">
+            <h1 id="selected_tile_value">?</h1>
+          </div>
         </div>
 
         <div id="winning_tile">
           <h6>Winning tile:</h6>
+
+          <div id="winning_tile_cont">
+            <h1 id="winning_tile_value">?</h1>
+          </div>
         </div>
 
-        <div id="selected_tile"></div>
         <div id="amount">
-          <h6>Enter bet amount: </h6>
-          <input />
-          <button class="btn btn-primary">Bet</button>
+          <h6>Enter bet amount in SOL:</h6>
+          <input size="4" type="text" id="bet_input" />
+          <button id="bet_button" class="btn btn-primary">Bet</button>
         </div>
 
         <div id="claim"></div>
       </div>
 
-      
       <script type="text/javascript" src="./shell.js"></script>
       <script type="text/javascript" src="./movement.js"></script>
       <script type="text/javascript" src="./UIRPC.js"></script>
+      <script type="text/javascript" src="./ParentRPC.js"></script>
       {{{ SCRIPT }}}
     </div>
-
   </body>
 </html>

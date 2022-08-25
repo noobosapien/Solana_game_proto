@@ -22,12 +22,57 @@
 #account_pk {
     position: absolute;
     left: 30vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#account_pk_name {
+    flex: 10%;
+    margin-right: 1rem;
+}
+
+#account_pk_value{
+    flex: 90%;
 }
 
 #sol_available {
     position: absolute;
     left: 30vw;
-    top: 10vh;
+    top: 5vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#sol_available_name {
+    flex: 1;
+    margin-right: 1rem;
+}
+
+#sol_available_value {
+    flex: 2;
+}
+
+#selected_tile_cont{
+    background-color: rgb(0, 175, 131);
+    color: #fff;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+}
+
+#winning_tile_cont {
+    background-color: rgb(0, 175, 131);
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
 }
 
 #amount {
@@ -129,4 +174,31 @@
     z-index: 1;
     top: 60%;
     left: 0%;
+}
+
+#processingModal{
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #e2e2e2;
+    color:rgb(45, 45, 45);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid rgb(34, 34, 34);
+    width: 80%;
 }
